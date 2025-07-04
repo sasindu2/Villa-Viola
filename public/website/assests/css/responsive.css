@@ -1,0 +1,76 @@
+@media only screen and (min-width: 640px) {}
+
+@media only screen and (min-width: 768px) {
+    .container {
+        max-width: calc(100% - 160px) !important;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    .img-slider .slick-arrow,
+    .d3-slider .slick-arrow {
+        height: 64px;
+        width: 64px;
+    }
+
+    .img-slider .slick-next,
+    .d3-slider .slick-next {
+        right: 36px;
+    }
+
+    .img-slider .slick-prev,
+    .d3-slider .slick-prev {
+        left: 36px;
+    }
+}
+
+@media only screen and (min-width: 1280px) {
+
+    .font-16-24 {
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+    .font-128-120 {
+        font-size: 128px;
+        line-height: 120px;
+    }
+
+    .font-30-28 {
+        font-size: 30px;
+        line-height: 28px;
+    }
+
+    .font-18-28 {
+        font-size: 18px;
+        line-height: 28px;
+    }
+
+    .font-72-88 {
+        font-size: 72px;
+        line-height: 88px;
+    }
+
+    .font-20-28 {
+        font-size: 20px;
+        line-height: 28px;
+    }
+
+    .font-24-32{
+        font-size: 24px;
+        line-height: 32px;
+    }
+
+    .font-36-48 {
+        font-size: 36px;
+        line-height: 48px;
+    }
+}
+
+@media only screen and (min-width: 1536px) {
+    .container {
+        max-width: calc(100% - 320px) !important;
+    }
+}
+
+@media only screen and (min-width: 1920px) {}

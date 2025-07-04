@@ -1,0 +1,328 @@
+:root {
+    --primary-color: #2E0B33;
+    --red: #EF4444;
+    --white: #FAFAFA;
+    --black: #09090B;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--primary-color) !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--black) !important;
+}
+
+body {
+    font-family: "Outfit";
+}
+
+.container {
+    max-width: calc(100% - 32px) !important;
+}
+
+.header-btn svg {
+    transition: transform 0.3s ease-in-out;
+}
+
+.header-btn:hover svg {
+    transform: rotate(45deg);
+}
+
+/* hero text animation */
+
+#textChanger {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+}
+
+#textChanger.fade-out {
+    opacity: 0;
+}
+
+/* ========================================== */
+
+
+form input {
+    box-shadow: 0px 0px 0px 2px #09090B, 0px 0px 0px 4px #B29361;
+}
+
+.iti__selected-dial-code {
+    color: #FAFAFA;
+}
+
+.color-btn.active {
+    border-color: #09090B !important;
+}
+
+.color-div {
+    display: none;
+}
+
+.color-div.active {
+    display: block;
+}
+.text-brand-purple {
+  color: #2E0B33;
+  text-shadow: 2px 2px 8px rgba(255,255,255,0.5);
+}
+
+.img {
+    display: none !important;
+}
+
+.img.active {
+    display: block !important;
+}
+
+/* slick dots======================================================== */
+.slick-dots {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center;
+}
+
+.img-slider .slick-dots {
+    bottom: 40px;
+}
+
+.img-slider .slick-dots li button {
+    background-color: white;
+    width: 14px;
+    height: 14px;
+    padding: 0;
+    border-radius: 100%;
+    opacity: 0.4;
+}
+
+.img-slider .slick-dots button::before {
+    display: none;
+}
+
+.img-slider .slick-dots li {
+    height: 14px;
+    width: 14px;
+    margin: 0px 4px;
+}
+
+.img-slider .slick-dots li.slick-active {
+    height: 18px;
+    width: 18px;
+}
+
+.img-slider .slick-dots li.slick-active button {
+    background-color: #6B5736;
+    width: 18px;
+    height: 18px;
+    opacity: 1;
+}
+
+/* ====================================================================  */
+
+/* slick arrows================================================= */
+
+.img-slider .slick-arrow,
+.d3-slider .slick-arrow {
+    height: 48px;
+    width: 48px;
+    border-radius: 100%;
+    content: "";
+    background-color: #8E7448;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    z-index: 9;
+    display: none;
+}
+
+.img-slider .slick-next,
+.d3-slider .slick-next {
+    right: -10px;
+}
+
+.img-slider .slick-prev,
+.d3-slider .slick-prev {
+    left: -10px;
+}
+
+.img-slider .slick-arrow::before,
+.d3-slider .slick-arrow::before {
+    display: none;
+}
+
+.img-slider .slick-arrow::after,
+.d3-slider .slick-arrow::after {
+    position: absolute;
+    content: url(../icon/slick-arrow.png);
+}
+
+.img-slider .slick-prev::after,
+.d3-slider .slick-prev::after {
+    rotate: 180deg !important;
+}
+
+.slick-prev.slick-disabled,
+.slick-next.slick-disabled {
+    opacity: 0.68;
+    cursor: default;
+}
+
+/* ============================================= */
+
+.contact-card {
+    display: none !important;
+}
+
+.link-back {
+    display: none !important;
+}
+
+.thumbs {
+    display: none !important;
+}
+
+/* wave motion=========================== */
+
+.wave-1 {
+    background: linear-gradient(-45deg, #2E0B33, #6E5058, #B99875, #E9DAC4);
+    background-size: 400% 400%;
+    animation: gradientBG 10s ease infinite;
+}
+
+.wave-2 {
+    background: linear-gradient(-45deg, #90755C, #3A3230, #CAB193, #D9C4A5);
+    background-size: 400% 400%;
+    animation: gradientBG 10s ease infinite;
+}
+
+.wave-3 {
+    background: linear-gradient(-45deg, #A38D75, #CEBEAE, #969175, #AC7848);
+    background-size: 400% 400%;
+    animation: gradientBG 10s ease infinite;
+}
+
+@keyframes gradientBG {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* preloader=============================== */
+
+.loader-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#loader-2 span {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    background-color: var(--primary-color);
+    margin: 35px 5px;
+}
+
+#loader-2 span:nth-child(1) {
+    animation: bounce 1s ease-in-out infinite;
+}
+
+#loader-2 span:nth-child(2) {
+    animation: bounce 1s ease-in-out 0.33s infinite;
+}
+
+#loader-2 span:nth-child(3) {
+    animation: bounce 1s ease-in-out 0.66s infinite;
+}
+
+@keyframes bounce {
+
+    0%,
+    75%,
+    100% {
+        transform: translateY(0);
+    }
+
+    25% {
+        transform: translateY(-20px);
+    }
+}
+
+/* =================================================== */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.font-florentia {
+    font-family: 'Florentia';
+}
+
+.font-16-24 {
+    font-size: 14px;
+    line-height: 24px;
+}
+
+.font-128-120 {
+    font-size: 39px;
+    line-height: 44px;
+}
+
+.font-30-28 {
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.font-18-28 {
+    font-size: 14px;
+    line-height: 24px;
+}
+
+.font-72-88 {
+    font-size: 36px;
+    line-height: 44px;
+}
+
+.font-20-28 {
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.font-24-32 {
+    font-size: 16px;
+    line-height: 32px;
+}
+
+.font-36-48 {
+    font-size: 20px;
+    line-height: 24px;
+}
