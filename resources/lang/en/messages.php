@@ -7,7 +7,7 @@ return [
      'location' => 'Katuneriya Sri Lanka',
      'off_plan' => 'Pool access and foods ',
      'approved_by_ministry' => 'AC and Non-AC rooms',
-     'welcome_key1' => 'Welcome to Villa Viola',
+     'welcome_key1' => 'Welcome to Villa Viola Resort – Where nature meets relaxation.',
      'compact_layout' => 'We invite you to relax in our rooms and suites, surrounded by the breeze of the bay, the palm trees dancing in the wind and an elegance with a seaside taste.',
     'bathrooms' => 'Private Bathrooms',
     'area_size' => 'pool access',
@@ -32,7 +32,6 @@ return [
     'basic_storage' => 'Unlimited ',
     'smart_lighting_climate' => 'Smart lighting & climate control',
     'fully_furnished_apartments' => 'Breakfast, lunch, and dinner included',
-
     'energizes_senses' => 'Energizes and refreshes your senses',
     'boldness_message' => 'Boldness pulses through your space',
     'sign_up_brochure' => 'Sign up now to get our exclusive resort brochure',

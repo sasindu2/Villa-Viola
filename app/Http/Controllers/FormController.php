@@ -22,10 +22,18 @@ class FormController extends Controller
    
     FormSubmission::create($data);
 
-    Mail::to('sasindu.7needle@gmail.com')->send(new FormSubmissionMail($data));
+    Mail::to('villaviolaresort@gmail.com')->send(new FormSubmissionMail($data));
 
     // 2. Send thank-you to user
     Mail::to($data['email'])->send(new ThankYouMail($data));
+
+    // Check if the request is AJAX
+    if ($request->ajax() || $request->wantsJson()) {
+        return response()->json([
+            'success' => true,
+            'message' => 'Your form has been submitted successfully!'
+        ]);
+    }
 
     return redirect()->back()->with('success', 'Your form has been submitted successfully!');
 }
