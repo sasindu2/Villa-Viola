@@ -17,6 +17,9 @@ COPY . .
 # Build frontend assets with Vite
 RUN npm run build
 
+# Create dist symlink for deployment platforms that expect it
+RUN ln -sf public/build dist
+
 ### Stage 2: PHP Production Image
 FROM php:8.2-fpm-alpine AS production
 
