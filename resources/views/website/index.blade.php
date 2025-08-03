@@ -56,7 +56,7 @@
                         <div class="flex items-center gap-[8px]">
                             <button id="langButton"
                                 class="inline-flex justify-center w-full font-16-24 font-medium text-white">
-                                {{ app()->getLocale() == 'ar' ? 'Europe' : 'English' }}
+                                {{ app()->getLocale() == 'ar' ? 'Italiano' : 'English' }}
                             </button>
                             <img src="{{ asset('website/assests/icon/arrow-down.svg') }}" alt="">
                         </div>
@@ -109,9 +109,10 @@
 
                     </div>
                     <h1 id="textChanger"
-                        class="font-128-120 font-normal font-florentia text-brand-purple text-white text-center hero-title"></h1>
+                        class="font-128-120 font-normal font-florentia text-brand-purple text-white text-center hero-title">
+                    </h1>
 
-                    <h1 class=" font-normal font-florentia text-brand-purple text-center hero-title" >
+                    <h1 class=" font-normal font-florentia text-brand-purple text-center hero-title">
                         <div id="textChanger"></div>
                     </h1>
                 </div>
@@ -279,49 +280,49 @@
                             <img class="rounded-[12px] img active w-full"
                                 src="{{ asset('website/assests/img/018.jpg') }}" alt="">
                             <img class="rounded-[12px] img w-full"
-                                src="{{ asset('website/assests/img/slider-img-2.webp') }}" alt="">
+                                src="{{ asset('website/assests/img/027.jpg') }}" alt="">
                             <img class="rounded-[12px] img w-full"
-                                src="{{ asset('website/assests/img/slider-img-3.webp') }}" alt="">
+                                src="{{ asset('website/assests/img/031.jpg') }}" alt="">
                         </div>
                         <div class="content">
                             <img class="rounded-[12px] img active w-full"
                                 src="{{ asset('website/assests/img/018.jpg') }}" alt="">
                             <img class="rounded-[12px] img w-full"
-                                src="{{ asset('website/assests/img/slider-img-2.webp') }}" alt="">
+                                src="{{ asset('website/assests/img/027.jpg') }}" alt="">
                             <img class="rounded-[12px] img w-full"
-                                src="{{ asset('website/assests/img/slider-img-3.webp') }}" alt="">
+                                src="{{ asset('website/assests/img/031.jpg') }}" alt="">
                         </div>
                         <div class="content">
                             <img class="rounded-[12px] img active w-full"
                                 src="{{ asset('website/assests/img/018.jpg') }}" alt="">
                             <img class="rounded-[12px] img w-full"
-                                src="{{ asset('website/assests/img/slider-img-2.webp') }}" alt="">
+                                src="{{ asset('website/assests/img/027.jpg') }}" alt="">
                             <img class="rounded-[12px] img w-full"
-                                src="{{ asset('website/assests/img/slider-img-3.webp') }}" alt="">
+                                src="{{ asset('website/assests/img/031.jpg') }}" alt="">
                         </div>
                         <div class="content">
                             <img class="rounded-[12px] img active w-full"
                                 src="{{ asset('website/assests/img/018.jpg') }}" alt="">
                             <img class="rounded-[12px] img w-full"
-                                src="{{ asset('website/assests/img/slider-img-2.webp') }}" alt="">
+                                src="{{ asset('website/assests/img/027.jpg') }}" alt="">
                             <img class="rounded-[12px] img w-full"
-                                src="{{ asset('website/assests/img/slider-img-3.webp') }}" alt="">
+                                src="{{ asset('website/assests/img/031.jpg') }}" alt="">
                         </div>
                         <div class="content">
                             <img class="rounded-[12px] img active w-full"
                                 src="{{ asset('website/assests/img/018.jpg') }}" alt="">
                             <img class="rounded-[12px] img w-full"
-                                src="{{ asset('website/assests/img/slider-img-2.webp') }}" alt="">
+                                src="{{ asset('website/assests/img/027.jpg') }}" alt="">
                             <img class="rounded-[12px] img w-full"
-                                src="{{ asset('website/assests/img/slider-img-3.webp') }}" alt="">
+                                src="{{ asset('website/assests/img/030.jpg') }}" alt="">
                         </div>
                         <div class="content">
                             <img class="rounded-[12px] img active w-full"
                                 src="{{ asset('website/assests/img/018.jpg') }}" alt="">
                             <img class="rounded-[12px] img w-full"
-                                src="{{ asset('website/assests/img/slider-img-2.webp') }}" alt="">
+                                src="{{ asset('website/assests/img/027.jpg') }}" alt="">
                             <img class="rounded-[12px] img w-full"
-                                src="{{ asset('website/assests/img/slider-img-3.webp') }}" alt="">
+                                src="{{ asset('website/assests/img/031.jpg') }}" alt="">
                         </div>
                     </div>
                 </div>
@@ -577,7 +578,7 @@
                         {{ __('messages.sign_up_brochure') }}</h6>
                     <p class="font-20-28 text-[#FAFAFA] font-normal tracking-[0.4px] mb-[36px]">
                         {{ __('messages.free_upgrade') }}</p>
-                    <form action="{{ route('form.submit') }}" method="POST">
+                    <form id="contactForm" action="{{ route('form.submit') }}" method="POST">
                         @csrf
                         <div class="flex flex-col gap-[8px] mb-[24px]">
                             <span
@@ -600,9 +601,18 @@
                                 class="py-[12px] px-[16px] border border-[#FFF] rounded-[12px] bg-[#2E0B33] font-16-24 text-[#FAFAFA] font-medium w-full" />
                             <input type="hidden" name="phone" id="full_phone" />
                         </div>
-                        <button
-                            class="rounded-[12px] bg-white flex items-center justify-center h-[52px] font-16-24 font-semibold text-[#09090B] w-full">{{ __('messages.request_info') }}</button>
+                        <button type="submit" id="submitBtn"
+                            class="rounded-[12px] bg-white flex items-center justify-center h-[52px] font-16-24 font-semibold text-[#09090B] w-full">
+                            <span id="btnText" data-original="{{ __('messages.request_info') }}">{{ __('messages.request_info') }}</span>
+                            <div id="btnLoader" class="hidden ml-2">
+                                <svg class="animate-spin h-5 w-5 text-[#09090B]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                </svg>
+                            </div>
+                        </button>
                     </form>
+                    <div id="formMessage" class="hidden mt-4 p-4 rounded-lg"></div>
                     @if (session('success'))
                         <div class="text-green-500 mt-4">
                             {{ session('success') }}
@@ -619,56 +629,20 @@
 
     <section class="section py-[32px] lg:py-[120px] flex justify-center">
         <div class="container">
-            <div class="lg:flex justify-between items-start mb-[20px] lg:mb-[80px]">
-                <h2
-                    class="font-72-88 font-normal font-florentia text-[#09090B] text-center lg:text-left mb-[16px] lg:mb-0">
+            <div class="lg:flex justify-between items-start mb-[5vw] gap-8">
+                <h2 class="font-72-88 font-normal font-florentia text-[#09090B] text-center lg:text-left mb-4 lg:mb-0">
                     {!! __('messages.see_it_3d') !!}
                 </h2>
-                <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7913.712005979042!2d79.83571701035078!3d7.370032276404068!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2c3006d460271%3A0x545b7611e3526c1d!2sVilla%20Viola%20Resort!5e0!3m2!1sen!2slk!4v1751561177280!5m2!1sen!2slk"
-                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"></iframe>
-
-                <div class="flex justify-center">
-
+                <div
+                    class="w-full max-w-xl lg:max-w-[540px] aspect-[4/3] rounded-2xl overflow-hidden shadow-md mx-auto lg:mx-0 bg-white">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7913.712005979042!2d79.83571701035078!3d7.370032276404068!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2c3006d460271%3A0x545b7611e3526c1d!2sVilla%20Viola%20Resort!5e0!3m2!1sen!2slk!4v1751561177280!5m2!1sen!2slk"
+                        class="w-full h-full border-0" allowfullscreen loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade" style="min-height:220px;"></iframe>
                 </div>
             </div>
-            <div class="lg:hidden">
-                <div class="d3-slider">
-                    <div>
-                        <div class="mb-[20px] rounded-[20px] 3d-div">
-                            <iframe width="100%" height="640" frameborder="0"
-                                allow="xr-spatial-tracking; gyroscope; accelerometer" allowfullscreen scrolling="no"
-                                src="https://kuula.co/share/hbTgY/collection/71XSs?logo=1&info=1&fs=1&vr=0&sd=1&thumbs=1"></iframe>
-                        </div>
-                        <h6 class="font-24-32 font-semibold text-[#09090B] text-center lg:text-left">
-                            {{ __('messages.violet_key_project') }}
-                        </h6>
-                    </div>
-                    <div>
-                        <div class="mb-[20px] rounded-[20px] 3d-div">
-                            <iframe width="100%" height="640" frameborder="0"
-                                allow="xr-spatial-tracking; gyroscope; accelerometer" allowfullscreen scrolling="no"
-                                src="https://kuula.co/share/hbTgR/collection/71XSs?logo=1&info=1&fs=1&vr=0&sd=1&thumbs=1"></iframe>
 
-                        </div>
-                        <h6 class="font-24-32 font-semibold text-[#09090B] text-center lg:text-left">
-                            {{ __('messages.terracotta_haven_project') }}
-                        </h6>
-                    </div>
-                    <div>
-                        <div class="mb-[20px] rounded-[20px] 3d-div">
-                            <iframe width="100%" height="640" frameborder="0"
-                                allow="xr-spatial-tracking; gyroscope; accelerometer" allowfullscreen scrolling="no"
-                                src="https://kuula.co/share/hbTgW/collection/71XSs?logo=1&info=1&fs=1&vr=0&sd=1&thumbs=1"></iframe>
 
-                        </div>
-                        <h6 class="font-24-32 font-semibold text-[#09090B] text-center lg:text-left">
-                            {{ __('messages.verdiq_one_premium') }}
-                        </h6>
-                    </div>
-                </div>
-            </div>
 
         </div>
     </section>

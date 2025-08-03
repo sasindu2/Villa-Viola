@@ -147,7 +147,7 @@ $(document).ready(function () {
 
     // Add Gulf and European countries (ISO 2-letter codes)
     const allowedCountries = [
-        'ae', 'bh', 'qa', 'sa', 'om', 'kw', // Gulf
+        
         'gb', 'de', 'fr', 'it', 'es', 'pt', // Europe: UK, Germany, France, Italy, Spain, Portugal
         'ch', 'nl', 'be', 'at', 'se', 'no', // Switzerland, Netherlands, Belgium, Austria, Sweden, Norway
         'fi', 'dk', 'ie', 'pl', 'cz', 'gr', // Finland, Denmark, Ireland, Poland, Czechia, Greece
@@ -155,17 +155,94 @@ $(document).ready(function () {
     ];
 
     const iti = window.intlTelInput(input, {
-        initialCountry: 'ae',
+        initialCountry: 'it',
         separateDialCode: true,
         onlyCountries: allowedCountries,
         utilsScript: 'https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js',
     });
+    
+    // Store the instance globally for form submission
+    window.itiInstance = iti;
 
     $('form').on('submit', function () {
         const fullPhone = iti.getNumber(); // <-- now this will work
         $('#full_phone').val(fullPhone); // Set value to hidden input
     });
 });
+
+// AJAX Form Submission Handler
+$(document).ready(function() {
+    $('#contactForm').on('submit', function(e) {
+        e.preventDefault(); // Prevent default form submission
+        
+        const form = $(this);
+        const submitBtn = $('#submitBtn');
+        const btnText = $('#btnText');
+        const btnLoader = $('#btnLoader');
+        const formMessage = $('#formMessage');
+        
+        // Show loading state
+        submitBtn.prop('disabled', true);
+        btnText.text('Sending...');
+        btnLoader.removeClass('hidden');
+        formMessage.addClass('hidden');
+        
+        // Get form data
+        const formData = new FormData(this);
+        
+        // Make sure phone number is set before submitting
+        const fullPhone = window.itiInstance ? window.itiInstance.getNumber() : $('#full_phone').val();
+        formData.set('phone', fullPhone);
+        
+        $.ajax({
+            url: form.attr('action'),
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function(response) {
+                // Show success message
+                formMessage.removeClass('hidden')
+                          .removeClass('bg-red-100 text-red-700 border-red-300')
+                          .addClass('bg-green-100 text-green-700 border border-green-300')
+                          .text('Thank you! Your request has been submitted successfully.');
+                
+                // Reset form
+                form[0].reset();
+                
+                // Reset button state
+                submitBtn.prop('disabled', false);
+                btnText.text(btnText.data('original'));
+                btnLoader.addClass('hidden');
+            },
+            error: function(xhr, status, error) {
+                let errorMessage = 'An error occurred. Please try again.';
+                
+                if (xhr.responseJSON && xhr.responseJSON.message) {
+                    errorMessage = xhr.responseJSON.message;
+                } else if (xhr.responseJSON && xhr.responseJSON.errors) {
+                    const errors = xhr.responseJSON.errors;
+                    errorMessage = Object.values(errors).flat().join(', ');
+                }
+                
+                // Show error message
+                formMessage.removeClass('hidden')
+                          .removeClass('bg-green-100 text-green-700 border-green-300')
+                          .addClass('bg-red-100 text-red-700 border border-red-300')
+                          .text(errorMessage);
+                
+                // Reset button state
+                submitBtn.prop('disabled', false);
+                btnText.text(btnText.data('original'));
+                btnLoader.addClass('hidden');
+            }
+        });
+    });
+});
+
 //  img gallery====================================
 
 $(document).ready(function () {

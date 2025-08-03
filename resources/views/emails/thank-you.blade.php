@@ -2,4 +2,4 @@
 
 <p>We’ve received your request and will get back to you soon.</p>
 
-<p>Cheers,<br>Key1 Team</p>
+<p>Cheers,<br>Villa Viola Team</p>
