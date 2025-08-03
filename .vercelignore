@@ -20,3 +20,5 @@ vendor
 *.log
 npm-debug.log*
 .npm
+dist
+build

@@ -2,7 +2,8 @@
     "private": true,
     "type": "module",
     "scripts": {
-        "build": "vite build",
+        "build": "vite build && npm run postbuild",
+        "postbuild": "echo 'Build completed - no dist directory needed for serverless deployment'",
         "build:static": "vite build --outDir dist",
         "build:ssr": "vite build && vite build --ssr",
         "dev": "vite",
