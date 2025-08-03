@@ -11,6 +11,7 @@ define('LARAVEL_START', microtime(true));
 
 // Check if Laravel is properly set up
 if (!file_exists($projectRoot . '/vendor/autoload.php')) {
+    
     http_response_code(500);
     echo "Laravel dependencies not found. Please run 'composer install'.";
     exit(1);
