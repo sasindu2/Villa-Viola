@@ -1,16 +1,19 @@
 {
   "version": 2,
-  "framework": null,
-  "buildCommand": "npm run build",
-  "outputDirectory": "public",
-  "installCommand": "npm install",
-  "devCommand": "npm run dev",
+  "buildCommand": "./build.sh",
   "functions": {
-    "api/**.php": {
-      "runtime": "vercel-php@0.6.0"
+    "api/index.php": {
+      "runtime": "vercel-php@0.7.0"
     }
   },
   "routes": [
+    {
+      "src": "/favicon\\.(ico|png|svg)$",
+      "dest": "/favicon.$1",
+      "headers": {
+        "Cache-Control": "public, max-age=86400"
+      }
+    },
     {
       "src": "/build/(.*)",
       "dest": "/build/$1",
@@ -19,22 +22,18 @@
       }
     },
     {
-      "src": "/assets/(.*)",
-      "dest": "/assets/$1",
-      "headers": {
-        "Cache-Control": "public, max-age=31536000, immutable"
-      }
-    },
-    {
-      "src": "/(css|js|images|fonts)/(.*)",
+      "src": "/(css|js|images|fonts|website)/(.*)",
       "dest": "/$1/$2",
       "headers": {
         "Cache-Control": "public, max-age=31536000, immutable"
       }
     },
     {
-      "src": "/api/(.*)",
-      "dest": "/api/index.php"
+      "src": "/(.*\\.(css|js|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot))$",
+      "dest": "/$1",
+      "headers": {
+        "Cache-Control": "public, max-age=31536000, immutable"
+      }
     },
     {
       "src": "/(.*)",
@@ -47,6 +46,8 @@
     "LOG_CHANNEL": "stderr",
     "SESSION_DRIVER": "cookie",
     "CACHE_DRIVER": "array",
-    "QUEUE_CONNECTION": "sync"
+    "QUEUE_CONNECTION": "sync",
+    "VIEW_COMPILED_PATH": "/tmp/storage/framework/views",
+    "SESSION_SECURE_COOKIE": "true"
   }
 }
