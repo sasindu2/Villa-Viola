@@ -8,10 +8,10 @@ WORKDIR /app
 # Copy package files for dependency installation
 COPY package*.json ./
 
-# Install dependencies with npm ci for faster, reliable, reproducible builds
-RUN npm ci --only=production && npm cache clean --force
+# Install all dependencies (including dev dependencies needed for build)
+RUN npm ci && npm cache clean --force
 
-# Copy source code
+# Copy source code (excluding items in .dockerignore)
 COPY . .
 
 # Build frontend assets with Vite
