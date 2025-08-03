@@ -1,9 +1,14 @@
 {
   "version": 2,
-  "buildCommand": "npm run build",
+  "builds": [
+    {
+      "src": "composer.json",
+      "use": "@vercel/php"
+    }
+  ],
   "functions": {
     "api/index.php": {
-      "runtime": "vercel-php@0.7.0"
+      "runtime": "vercel-php@0.6.0"
     }
   },
   "routes": [
@@ -32,5 +37,9 @@
       "src": "/(.*)",
       "dest": "/api/index.php"
     }
-  ]
+  ],
+  "env": {
+    "APP_ENV": "production",
+    "APP_DEBUG": "false"
+  }
 }
